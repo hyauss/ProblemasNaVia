@@ -1,3 +1,8 @@
+//Gabriel Barros Albertini
+//Gustavo Luigi Chao Pinotti
+//Rafael de Menezes Ros
+//Vinicius Alves Marques
+
 import 'package:flutter/material.dart';
 
 class CategoriaPage extends StatelessWidget {
