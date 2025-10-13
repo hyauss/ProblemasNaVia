@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-
+class DenunciaPage extends StatelessWidget {
+  const DenunciaPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,63 +11,28 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Topo com título e ícone de perfil
+            // Topo voltar
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const SizedBox(width: 40), // espaço para alinhar com o ícone da direita
+                  IconButton(
+                    icon: const Icon(Icons.arrow_back_ios, size: 30),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/home');       
+                    },
+                  ),
                   const Text(
                     'Você está aqui!',
                     style: TextStyle(
                       fontSize: 24,
                     ),
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.account_circle, size: 30),
-                    onPressed: () {
-                      // Ação para abrir perfil
-                      //ROTA DO PERFIL
-                      Navigator.pushNamed(context,'/perfil');
-                    },
-                  ),
+                  const SizedBox(width: 40), // espaço para alinhar com o ícone da direita
                 ],
               ),
             ),
-
-            // Campo de busca
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.search),
-                  hintText: 'Buscar endereço',
-                  border: InputBorder.none,
-                ),
-              ),
-            ),
-            const Divider(),
-
-            // Filtros
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: TextField(
-                readOnly: true,
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.filter_alt_outlined),
-                  hintText: 'Filtros',
-                  border: InputBorder.none,
-                ),
-                onTap: () {
-                  // abrir filtros
-                },
-              ),
-            ),
-            const Divider(),
-
-            const SizedBox(height: 16),
-
             // Mapa circular
             ClipOval(
               child: Image.asset(
@@ -83,7 +46,7 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 24),
 
             const Text(
-              'O que deseja realizar?',
+              'Denúncia:',
               style: TextStyle(
                 fontSize: 22,
               ),
@@ -97,6 +60,7 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: Column(
                 children: [
+                  const SizedBox(height: 40), // espaçamento vertical
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
@@ -108,12 +72,12 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/denuncia');
+                        Navigator.pushNamed(context, '/categoria');
                       },
-                      child: const Text('Denúncia'),
+                      child: const Text('No local atual'),
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 40),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
@@ -125,9 +89,9 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/avaliacao');
+                        Navigator.pushNamed(context, '/inserir_local_denuncia');
                       },
-                      child: const Text('Avaliação'),
+                      child: const Text('inserir local'),
                     ),
                   ),
                 ],

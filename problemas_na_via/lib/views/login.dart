@@ -22,6 +22,9 @@ class _LoginPageState extends State<LoginPage> {
     Navigator.pushNamed(context, '/home');
 
   }
+  void _onCriarConta() {
+    Navigator.pushNamed(context, '/cadastro');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,27 +73,43 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 50),
               Center(
-                child: SizedBox(
-                  width: 180,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: _onConfirmar,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF4D94FF),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: 180,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: _onConfirmar,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF4D94FF),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          elevation: 0,
+                        ),
+                        child: const Text(
+                          'confirmar',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
                       ),
-                      elevation: 0,
                     ),
-                    child: const Text(
-                      'confirmar',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                        fontWeight: FontWeight.normal,
+                    const SizedBox(height: 20),
+                    TextButton(
+                      onPressed: _onCriarConta,
+                      child: const Text(
+                        'Criar conta?',
+                        style: TextStyle(
+                          color: Color(0xFF4D94FF),
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ],
