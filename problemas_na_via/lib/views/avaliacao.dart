@@ -72,7 +72,7 @@ class AvaliacaoPage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/no_local_atual');
+                        Navigator.pushNamed(context, '/preencher_avaliacao');
                       },
                       child: const Text('No local atual'),
                     ),

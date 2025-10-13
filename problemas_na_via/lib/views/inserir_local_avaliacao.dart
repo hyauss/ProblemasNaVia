@@ -20,7 +20,7 @@ class InserirLocalAvaliacao extends StatelessWidget {
                   IconButton(
                     icon: const Icon(Icons.arrow_back_ios, size: 30),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/denuncia');       
+                      Navigator.pushNamed(context, '/avaliacao');       
                     },
                   ),
                   const Text(
