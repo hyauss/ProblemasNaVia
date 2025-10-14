@@ -5,11 +5,17 @@
 
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
 
-
+class _HomePageState extends State<HomePage> {
+  
+  String? filtroSelecionado;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,23 +26,23 @@ class HomePage extends StatelessWidget {
           children: [
             // Topo com título e ícone de perfil
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 24.0,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const SizedBox(width: 40), // espaço para alinhar com o ícone da direita
-                  const Text(
-                    'Você está aqui!',
-                    style: TextStyle(
-                      fontSize: 24,
-                    ),
-                  ),
+                  const SizedBox(
+                    width: 40,
+                  ), // espaço para alinhar com o ícone da direita
+                  const Text('Você está aqui!', style: TextStyle(fontSize: 24)),
                   IconButton(
                     icon: const Icon(Icons.account_circle, size: 30),
                     onPressed: () {
                       // Ação para abrir perfil
                       //ROTA DO PERFIL
-                      Navigator.pushNamed(context,'/perfil');
+                      Navigator.pushNamed(context, '/perfil');
                     },
                   ),
                 ],
@@ -59,16 +65,24 @@ class HomePage extends StatelessWidget {
             // Filtros
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: TextField(
-                readOnly: true,
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.filter_alt_outlined),
-                  hintText: 'Filtros',
+              child: DropdownButtonFormField<String>(
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.filter_alt_outlined),
                   border: InputBorder.none,
                 ),
-                onTap: () {
-                  // abrir filtros
+                hint: const Text('Filtros'),
+                initialValue: filtroSelecionado,
+                onChanged: (String? novoValor) {
+                  setState(() {
+                    filtroSelecionado = novoValor;
+                  });
                 },
+                items: ['Metrô', 'Ponto de Onibûs', 'CPTM', "Monotrilho","Ciclofaixa","Denúncias","Avaliações"]
+                    .map(
+                      (opcao) =>
+                          DropdownMenuItem(value: opcao, child: Text(opcao)),
+                    )
+                    .toList(),
               ),
             ),
             const Divider(),
@@ -89,9 +103,7 @@ class HomePage extends StatelessWidget {
 
             const Text(
               'O que deseja realizar?',
-              style: TextStyle(
-                fontSize: 22,
-              ),
+              style: TextStyle(fontSize: 22),
               textAlign: TextAlign.center,
             ),
 
